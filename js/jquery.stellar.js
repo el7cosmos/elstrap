@@ -1,0 +1,1 @@
+/home/el/bower_components/jquery.stellar/jquery.stellar.js

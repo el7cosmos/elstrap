@@ -1,0 +1,63 @@
+#preloader {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #fff;
+  z-index: 9999;
+}
+
+#status {
+  font-size: 110px;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  margin: -100px 0 0 -100px;
+}
+
+#status .glyphicon-spin {
+  display: inline-block;
+  -moz-animation: spin 2.5s infinite linear;
+  -o-animation: spin 2.5s infinite linear;
+  -webkit-animation: spin 2.5s infinite linear;
+  animation: spin 2.5s infinite linear;
+}
+
+.margin25 {
+  margin-top: 25%;
+}
+
+#intro {
+  background: #fff;
+  padding-right: 20px;
+  padding-left: 20px;
+  min-height: 460px;
+  background: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/Pgo8c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgdmlld0JveD0iMCAwIDEgMSIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI+CiAgPGxpbmVhckdyYWRpZW50IGlkPSJncmFkLXVjZ2ctZ2VuZXJhdGVkIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDE9IjAlIiB5MT0iMCUiIHgyPSIwJSIgeTI9IjEwMCUiPgogICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iIzAwMDAwMCIgc3RvcC1vcGFjaXR5PSIwIi8+CiAgICA8c3RvcCBvZmZzZXQ9IjUwJSIgc3RvcC1jb2xvcj0iIzVlNWY2MCIgc3RvcC1vcGFjaXR5PSIwIi8+CiAgICA8c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiNiYmJkYzAiIHN0b3Atb3BhY2l0eT0iMC4xIi8+CiAgPC9saW5lYXJHcmFkaWVudD4KICA8cmVjdCB4PSIwIiB5PSIwIiB3aWR0aD0iMSIgaGVpZ2h0PSIxIiBmaWxsPSJ1cmwoI2dyYWQtdWNnZy1nZW5lcmF0ZWQpIiAvPgo8L3N2Zz4=);
+  background: -moz-linear-gradient(top,  rgba(0,0,0,0) 0%, rgba(94,95,96,0) 50%, rgba(187,189,192,0.1) 100%);
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(0,0,0,0)), color-stop(50%,rgba(94,95,96,0)), color-stop(100%,rgba(187,189,192,0.1)));
+  background: -webkit-linear-gradient(top,  rgba(0,0,0,0) 0%,rgba(94,95,96,0) 50%,rgba(187,189,192,0.1) 100%);
+  background: -o-linear-gradient(top,  rgba(0,0,0,0) 0%,rgba(94,95,96,0) 50%,rgba(187,189,192,0.1) 100%);
+  background: -ms-linear-gradient(top,  rgba(0,0,0,0) 0%,rgba(94,95,96,0) 50%,rgba(187,189,192,0.1) 100%);
+  background: linear-gradient(to bottom,  rgba(0,0,0,0) 0%,rgba(94,95,96,0) 50%,rgba(187,189,192,0.1) 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00000000', endColorstr='#1abbbdc0',GradientType=0 );
+}
+
+#intro h2 {
+  font-size: 56px;
+  text-align: center;
+  font-weight: 700;
+  color: #bbbdc0;
+  letter-spacing: -3px;
+  line-height: 1;
+}
+
+@media (max-width: 570px) {
+  #intro h2 {
+    font-size: 42px;
+    color: #bbbdc0;
+    letter-spacing: -1px;
+    padding-top: 25%;
+  }
+}
+
