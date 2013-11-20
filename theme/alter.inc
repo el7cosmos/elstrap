@@ -33,7 +33,16 @@ function elstrap_page_alter(&$page) {
       'class' => array('fb-like'),
       'data-href' => url($path, array('absolute' => TRUE)),
       'data-layout' => 'box_count',
-      'data-send' => 'false',
+    ),
+    '#value' => '',
+  );
+  $body['fb_share'] = array(
+    '#type' => 'html_tag',
+    '#tag' => 'div',
+    '#attributes' => array(
+      'class' => array('fb-share-button'),
+      'data-href' => url($path, array('absolute' => TRUE)),
+      'data-layout' => 'box_count',
     ),
     '#value' => '',
   );
@@ -107,10 +116,6 @@ function elstrap_page_alter(&$page) {
       'id' => 'share',
     ),
   );
-
-  if (module_exists('seo_checklist') && _seo_checklist_volacci_link_is_enabled()) {
-    unset($page['page_bottom']['seo_checklist_volacci_link']);
-  }
 }
 
 /**
