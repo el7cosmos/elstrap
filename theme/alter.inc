@@ -8,17 +8,6 @@
  */
 
 /**
- * Implements hook_js_alter().
- */
-function elstrap_js_alter(&$javascript) {
-  foreach ($javascript as $data => $js) {
-    if ($js['group'] != JS_LIBRARY && $js['scope'] == 'header') {
-      $javascript[$data]['scope'] = 'footer';
-    }
-  }
-}
-
-/**
  * Implements hook_page_alter().
  */
 function elstrap_page_alter(&$page) {
