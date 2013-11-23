@@ -21,7 +21,7 @@ function elstrap_preprocess_html(&$variables) {
     'group' => JS_THEME,
   );
 
-  drupal_add_css('http://fonts.googleapis.com/css?family=Open+Sans:400italic,700italic,400,700', array('type' => 'external'));
+  drupal_add_css('http://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700,400italic,700italic|Source+Code+Pro:400,700', array('type' => 'external'));
   drupal_add_js(array('elstrapViglink' => array('apiKey' => variable_get('viglink_api_key'))), 'setting');
   drupal_add_js(path_to_theme() . '/js/elstrap.viglink.js', $footer);
 
