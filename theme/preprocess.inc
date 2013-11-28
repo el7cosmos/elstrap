@@ -15,11 +15,31 @@ function elstrap_preprocess_html(&$variables) {
   }
   $variables['head_title'] = implode(' &middot; ', $variables['head_title_array']);
 
-  $footer = array(
-    'type' => 'file',
-    'scope' => 'footer',
-    'group' => JS_THEME,
-  );
+  $apple = array('57', '60', '72', '76', '114', '120', '144', '152');
+  foreach ($apple as $size) {
+    $icon = $size . 'x' . $size;
+    $attributes = array(
+      'rel' => 'apple-touch-icon',
+      'sizes' => $size . 'x' . $size,
+      'href' => url('apple-touch-icon-' . $size . 'x' . $size . '.png', array('absolute' => TRUE)),
+    );
+    drupal_add_html_head_link($attributes);
+  }
+
+  $png = array('16', '32', '96', '160', '196');
+  foreach ($png as $size) {
+    $icon = $size . 'x' . $size;
+    $attributes = array(
+      'rel' => 'icon',
+      'type' => 'image/png',
+      'sizes' => $size . 'x' . $size,
+      'href' => url('favicon-' . $size . 'x' . $size . '.png', array('absolute' => TRUE)),
+    );
+    drupal_add_html_head_link($attributes);
+  }
+
+  drupal_add_html_head(array('#tag' => 'meta', '#attributes' => array('name' => 'msapplication-TileColor', 'content' => '#428bca')), 'msapplication_tilecolor');
+  drupal_add_html_head(array('#tag' => 'meta', '#attributes' => array('name' => 'msapplication-TileImage', 'content' => url('mstile-144x144.png', array('absolute' => TRUE)))), 'msapplication_tileimage');
 
   drupal_add_css('http://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700,400italic,700italic|Source+Code+Pro:400,700', array('type' => 'external'));
 
