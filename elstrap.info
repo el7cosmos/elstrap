@@ -40,7 +40,7 @@ scripts[] = 'bootstrap/js/scrollspy.js'
 scripts[] = 'bootstrap/js/tab.js'
 scripts[] = 'bootstrap/js/transition.js'
 ; scripts[] = 'js/jquery.nicescroll.js'
-; scripts[] = 'js/elstrap.js'
+scripts[] = 'js/elstrap.js'
 ;
 ; ; Settings inherited by base theme, uncomment to override.
 ; ;settings[toggle_name] = 0

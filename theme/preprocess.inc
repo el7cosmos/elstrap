@@ -17,7 +17,6 @@ function elstrap_preprocess_html(&$variables) {
 
   $apple = array('57', '60', '72', '76', '114', '120', '144', '152');
   foreach ($apple as $size) {
-    $icon = $size . 'x' . $size;
     $attributes = array(
       'rel' => 'apple-touch-icon',
       'sizes' => $size . 'x' . $size,
@@ -28,7 +27,6 @@ function elstrap_preprocess_html(&$variables) {
 
   $png = array('16', '32', '96', '160', '196');
   foreach ($png as $size) {
-    $icon = $size . 'x' . $size;
     $attributes = array(
       'rel' => 'icon',
       'type' => 'image/png',
