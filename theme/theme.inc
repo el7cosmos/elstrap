@@ -209,3 +209,25 @@ function elstrap_menu_link__main_menu(array $variables) {
   $output = l($element['#title'], $element['#href'], $element['#localized_options']);
   return '<li' . drupal_attributes($element['#attributes']) . '>' . $output . $sub_menu . "</li>\n";
 }
+
+/**
+ * Overrides theme_image_style().
+ */
+function elstrap_image_style($variables) {
+  // Determine the dimensions of the styled image.
+  $dimensions = array(
+    'width' => $variables['width'],
+    'height' => $variables['height'],
+  );
+
+  image_style_transform_dimensions($variables['style_name'], $dimensions);
+
+  $variables['width'] = $dimensions['width'];
+  $variables['height'] = $dimensions['height'];
+
+  // Determine the URL for the styled image.
+  $path = image_style_url($variables['style_name'], $variables['path']);
+  $parsed_url = drupal_parse_url($path);
+  $variables['path'] = $parsed_url['path'];
+  return theme('image', $variables);
+}
