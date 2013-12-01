@@ -131,6 +131,16 @@ function elstrap_preprocess_node(&$variables) {
 }
 
 /**
+ * Implements hook_preprocess_html_tag().
+ */
+function elstrap_preprocess_html_tag(&$variables) {
+  $element = $variables['element'];
+  if (($element['#tag'] == 'style' || $element['#tag'] == 'link') && !empty($element['#attributes']['type']) && $element['#attributes']['type'] == 'text/css') {
+    unset($variables['element']['#attributes']['type']);
+  }
+}
+
+/**
  * Preprocess variables for theme_field()
  *
  * @see theme_field()
