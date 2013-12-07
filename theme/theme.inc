@@ -183,16 +183,16 @@ function elstrap_menu_link__main_menu(array $variables) {
 
   switch ($element['#href']) {
     case 'contact':
-      $element['#title'] = '<i class="fa fa-envelope"></i> <span class="sr-only">' . t($element['#title']) . '</span>';
+      $element['#title'] = '<i class="fa fa-envelope"></i> ' . t($element['#title']) . '</span>';
       break;
   }
 
   switch ($element['#original_link']['link_title']) {
     case 'Article':
-      $element['#title'] = '<i class="fa fa-pencil"></i> <span class="sr-only">' . t('Article') . '</span> <span class="caret"></span>';
+      $element['#title'] = '<i class="fa fa-pencil"></i> ' . t('Article') . '</span> <span class="caret"></span>';
       break;
     case 'Infographics':
-      $element['#title'] = '<i class="fa fa-picture-o"></i> <span class="sr-only">' . t($element['#title']) . '</span>';
+      $element['#title'] = '<i class="fa fa-picture-o"></i> ' . t($element['#title']) . '</span>';
       break;
     case 'Internet':
       $element['#title'] = '<i class="fa fa-globe"></i> ' . t($element['#title']);
