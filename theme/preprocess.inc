@@ -178,7 +178,12 @@ function elstrap_preprocess_image_formatter(&$variables) {
  * @see theme_pagespeed_insight_stats()
  */
 function elstrap_preprocess_pagespeed_insight_stats(&$variables) {
-  drupal_add_js(path_to_theme() . '/js/elstrap.pagespeed-insight.js');
+  $options = array(
+    'type' => 'file',
+    'scope' => 'footer',
+    'group' => JS_THEME,
+  );
+  drupal_add_js(path_to_theme() . '/js/elstrap.pagespeed-insight.js', $options);
 }
 
 /**
