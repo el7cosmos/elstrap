@@ -282,3 +282,88 @@ function elstrap_image_style($variables) {
   $variables['path'] = $parsed_url['path'];
   return theme('image', $variables);
 }
+
+/**
+ * Overrides theme_pagespeed_insight_score().
+ */
+function elstrap_pagespeed_insight_score($variables) {
+  $score = $variables['score'];
+
+  if ($score >= 50 && $score < 85) {
+    $state = 'warning';
+  }
+  elseif ($score < 50) {
+    $state = 'danger';
+  }
+  else {
+    $state = 'success';
+  }
+
+  return '<p id="score" class="lead text-center text-' . $state . '"><span class="fa-5x"><i class="fa fa-tachometer"></i> ' . $score . '/100</span></p>';
+}
+
+/**
+ * Overrides theme_pagespeed_insight_header().
+ */
+function elstrap_pagespeed_insight_header($variables) {
+  $header = $variables['header'];
+
+  if (isset($header['args'])) {
+    $options = array(
+      'html' => TRUE,
+      'attributes' => array(
+        'target' => '_blank',
+      ),
+    );
+    $search = array();
+    $replace = array();
+
+    foreach ($header['args'] as $key => $arg) {
+      if ($arg['type'] == 'HYPERLINK') {
+        $header['format'] .= ' <small>(' . l($arg['value'] . ' <i class="fa fa-external-link"></i>', $arg['value'], $options) . ')</small>';
+      }
+      else {
+        $search[] = "\$" . ($key + 1);
+        $replace[] = '<span class="badge">' .$arg['value'] . '</span>';
+      }
+    }
+    if (!empty($search)) {
+      return str_replace($search, $replace, $header['format']);
+    }
+  }
+
+  return $header['format'];
+}
+
+/**
+ * Overrides theme_pagespeed_insight_result().
+ */
+function elstrap_pagespeed_insight_result($variables) {
+  $result = $variables['result'];
+
+  if (isset($result['args'])) {
+    $options = array(
+      'html' => TRUE,
+      'attributes' => array(
+        'target' => '_blank',
+      ),
+    );
+    $search = array();
+    $replace = array();
+
+    foreach ($result['args'] as $key => $arg) {
+      $search[] = "\$" . ($key + 1);
+      if ($arg['type'] == 'URL') {
+        $replace[] = l($arg['value'] . ' <i class="fa fa-external-link"></i>', $arg['value'], $options);
+      }
+      else {
+        $replace[] = '<span class="badge">' .$arg['value'] . '</span>';
+      }
+    }
+    if (!empty($search)) {
+      return str_replace($search, $replace, $result['format']);
+    }
+  }
+
+  return $result['format'];
+}

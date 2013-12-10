@@ -169,3 +169,31 @@ function elstrap_preprocess_image_formatter(&$variables) {
   $variables['item']['attributes']['class'][] = 'img-thumbnail';
   $variables['item']['attributes']['class'][] = 'img-responsive';
 }
+
+/**
+ * Preprocess variables for theme_pagespeed_insight_stats()
+ *
+ * @see theme_pagespeed_insight_stats()
+ */
+function elstrap_preprocess_pagespeed_insight_stats(&$variables) {
+  drupal_add_js(path_to_theme() . '/js/elstrap.pagespeed-insight.js');
+}
+
+/**
+ * Preprocess variables for theme_pagespeed_insight_rule()
+ *
+ * @see theme_pagespeed_insight_rule()
+ */
+function elstrap_preprocess_pagespeed_insight_rule(&$variables) {
+  if (!$variables['rule']['ruleImpact']) {
+    $variables['state'] = 'success';
+  }
+  elseif ($variables['rule']['ruleImpact'] < 5) {
+    $variables['state'] = 'warning';
+  }
+  else {
+    $variables['state'] = 'danger';
+  }
+
+  $variables['id'] = drupal_html_id($variables['rule']['localizedRuleName']);
+}

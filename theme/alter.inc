@@ -128,3 +128,17 @@ function elstrap_form_search_form_alter(&$form, &$form_state) {
   $form['basic']['submit']['#suffix'] = '</span>';
 }
 
+/**
+ * Implements hook_form_FORM_ID_alter() for pagespeed_insight_analyze().
+ */
+function elstrap_form_pagespeed_insight_analyze_form_alter(&$form, &$form_state, $form_id) {
+  $form['url']['#field_prefix'] = '<div class="input-group"><span class="input-group-addon fa fa-globe"></span>';
+  $form['url']['#field_suffix'] = '</span></div>';
+
+  $form['actions']['submit']['#label'] = '<i class="fa fa-tachometer"></i> ' . $form['actions']['submit']['#value'];
+  $form['actions']['submit']['#attributes']['class'][] = 'btn-primary';
+  $form['actions']['submit']['#attributes']['class'][] = 'btn-lg';
+  $form['actions']['submit']['#attributes']['class'][] = 'btn-block';
+  $form['actions']['submit']['#prefix'] = '<div class="form-group">';
+  $form['actions']['submit']['#suffix'] = '</div>';
+}
