@@ -184,7 +184,6 @@ function elstrap_preprocess_pagespeed_insight_stats(&$variables) {
     'group' => JS_THEME,
   );
   drupal_add_js(path_to_theme() . '/js/elstrap.pagespeed-insight.js', $options);
-  drupal_add_css('#resources{ width: 100%; height: 100%; }', array('type' => 'inline', 'group' => CSS_THEME));
 }
 
 /**
