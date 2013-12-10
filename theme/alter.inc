@@ -8,6 +8,15 @@
  */
 
 /**
+ * Implements hook_js_alter().
+ */
+function elstrap_js_alter(&$javascript) {
+  if (isset($javascript['sites/all/themes/bootstrap/js/misc/ajax.js'])) {
+    $javascript['sites/all/themes/bootstrap/js/misc/ajax.js']['data'] = path_to_theme() . '/js/misc/ajax.js';
+  }
+}
+
+/**
  * Implements hook_page_alter().
  */
 function elstrap_page_alter(&$page) {
