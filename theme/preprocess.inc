@@ -173,20 +173,6 @@ function elstrap_preprocess_image_formatter(&$variables) {
 }
 
 /**
- * Preprocess variables for theme_pagespeed_insight_stats()
- *
- * @see theme_pagespeed_insight_stats()
- */
-function elstrap_preprocess_pagespeed_insight_stats(&$variables) {
-  $options = array(
-    'type' => 'file',
-    'scope' => 'footer',
-    'group' => JS_THEME,
-  );
-  drupal_add_js(path_to_theme() . '/js/elstrap.pagespeed-insight.js', $options);
-}
-
-/**
  * Preprocess variables for theme_pagespeed_insight_rule()
  *
  * @see theme_pagespeed_insight_rule()
