@@ -6,7 +6,7 @@
       </a>
     </h4>
   </div>
-  <div id="<?php print $id; ?>" class="panel-collapse collapse">
+  <div id="<?php print $id; ?>" class="panel-collapse collapse<?php print $rule['ruleImpact'] ? ' in' : ''; ?>">
     <div class="panel-body">
       <?php foreach ($rule['urlBlocks'] as $block): ?>
         <p><?php print theme('pagespeed_insight_header', array('header' => $block['header'])); ?></p>

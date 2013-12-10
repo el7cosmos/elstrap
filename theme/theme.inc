@@ -357,7 +357,7 @@ function elstrap_pagespeed_insight_result($variables) {
     foreach ($result['args'] as $key => $arg) {
       $search[] = "\$" . ($key + 1);
       if ($arg['type'] == 'URL') {
-        $replace[] = l($arg['value'] . ' <i class="fa fa-external-link"></i>', $arg['value'], $options);
+        $replace[] = l(_filter_url_trim($arg['value'], 77) . ' <i class="fa fa-external-link"></i>', $arg['value'], $options);
       }
       else {
         $replace[] = '<span class="badge">' .$arg['value'] . '</span>';
