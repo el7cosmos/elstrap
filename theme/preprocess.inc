@@ -131,7 +131,9 @@ function elstrap_preprocess_node(&$variables) {
 }
 
 /**
- * Implements hook_preprocess_html_tag().
+ * Preprocess variables for theme_html_tag()
+ *
+ * @see theme_html_tag()
  */
 function elstrap_preprocess_html_tag(&$variables) {
   $element = $variables['element'];
