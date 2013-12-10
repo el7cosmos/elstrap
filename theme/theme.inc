@@ -233,6 +233,9 @@ function elstrap_menu_link__main_menu(array $variables) {
   }
 
   switch ($element['#href']) {
+    case 'pagespeed-insight':
+      $element['#title'] = '<i class="fa fa-tachometer"></i> ' . t($element['#title']) . '</span>';
+      break;
     case 'contact':
       $element['#title'] = '<i class="fa fa-envelope"></i> ' . t($element['#title']) . '</span>';
       break;
