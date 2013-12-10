@@ -9,10 +9,10 @@
   <div id="statistic" class="panel-collapse collapse">
     <div class="panel-body">
       <div class="row">
-        <div class="col-xs-12 col-sm-6 col-md-3 text-center">
+        <div class="col-xs-12 col-sm-6 col-md-4 text-center">
           <canvas id="resources" width="250" height="150"></canvas>
         </div>
-        <div class="col-xs-12 col-sm-6 col-md-9">
+        <div class="col-xs-12 col-sm-6 col-md-8">
           <ul>
             <?php if (isset($stats['htmlResponseBytes'])): ?>
               <li class="text-primary">HTML <span class="badge pull-right"><?php print format_size($stats['htmlResponseBytes']); ?></span></li>
