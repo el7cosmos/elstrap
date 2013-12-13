@@ -246,7 +246,7 @@ function elstrap_menu_link__main_menu(array $variables) {
       $element['#title'] = '<i class="fa fa-pencil"></i> ' . t('Article') . '</span> <span class="caret"></span>';
       break;
     case 'Infographics':
-      $element['#title'] = '<i class="fa fa-picture-o"></i> ' . t($element['#title']) . '</span>';
+      $element['#title'] = '<i class="fa fa-bar-chart-o"></i> ' . t($element['#title']) . '</span>';
       break;
     case 'Internet':
       $element['#title'] = '<i class="fa fa-globe"></i> ' . t($element['#title']);
@@ -255,7 +255,7 @@ function elstrap_menu_link__main_menu(array $variables) {
       $element['#title'] = '<i class="fa fa-code"></i> ' . t($element['#title']);
       break;
     case 'Technology':
-      $element['#title'] = '<i class="fa fa-flash"></i> ' . t($element['#title']);
+      $element['#title'] = '<i class="fa fa-rocket"></i> ' . t($element['#title']);
       break;
   }
 

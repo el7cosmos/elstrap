@@ -14,7 +14,7 @@ function elstrap_state_variable($key) {
 function elstrap_node_type_icon($type) {
   $icon = array(
     'article' => 'pencil',
-    'infographics' => 'picture-o',
+    'infographics' => 'bar-chart-o',
   );
 
   return $icon[$type];
