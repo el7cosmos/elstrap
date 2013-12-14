@@ -40,6 +40,7 @@ function elstrap_preprocess_html(&$variables) {
   drupal_add_html_head(array('#tag' => 'meta', '#attributes' => array('name' => 'msapplication-TileImage', 'content' => url('mstile-144x144.png', array('absolute' => TRUE)))), 'msapplication_tileimage');
 
   drupal_add_css('http://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700,400italic,700italic|Source+Code+Pro:400,700', array('type' => 'external'));
+  drupal_add_css('//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css', array('type' => 'external'));
 
   if (drupal_is_front_page()) {
     // $variables['attributes_array']['data-spy'] = 'scroll';
