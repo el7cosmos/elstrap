@@ -40,7 +40,7 @@ function elstrap_page_alter(&$page) {
     '#attributes' => array(
       'class' => array('fb-share-button'),
       'data-href' => url($path, array('absolute' => TRUE)),
-      'data-layout' => 'box_count',
+      'data-type' => 'box_count',
     ),
     '#value' => '',
   );
@@ -79,14 +79,6 @@ function elstrap_page_alter(&$page) {
   }
 
   $body['google_plus'] = array(
-    '#type' => 'html_tag',
-    '#tag' => 'div',
-    '#attributes' => array(
-      'class' => array('g-plusone'),
-      'data-size' => 'tall',
-      'data-href' => url($path, array('absolute' => TRUE)),
-    ),
-    '#value' => '',
     '#attached' => array(
       'js' => array(
         array(
@@ -106,6 +98,30 @@ function elstrap_page_alter(&$page) {
       ),
     ),
   );
+  $body['google_plus']['one'] = array(
+    '#type' => 'html_tag',
+    '#tag' => 'div',
+    '#attributes' => array(
+      'class' => array('g-plusone'),
+      'data-size' => 'tall',
+      'data-href' => url($path, array('absolute' => TRUE)),
+    ),
+    '#value' => '',
+  );
+  $body['google_plus']['share'] = array(
+    '#type' => 'html_tag',
+    '#tag' => 'div',
+    '#attributes' => array(
+      'class' => array('g-plus'),
+      'data-action' => 'share',
+      'data-annotation' => 'vertical-bubble',
+      'data-href' => url($path, array('absolute' => TRUE)),
+      'data-width' => 70,
+      'data-height' => 60,
+    ),
+    '#value' => '',
+  );
+
   $page['page_bottom']['share'] = array(
     '#theme' => 'bootstrap_modal',
     '#heading' => t('Share'),

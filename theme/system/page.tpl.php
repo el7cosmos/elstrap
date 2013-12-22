@@ -33,13 +33,15 @@
         <ul class="nav navbar-nav pull-right">
           <li>
             <a data-toggle="modal" href="#share">
-              <?php print t('Share'); ?>
-              <i class="fa fa-share"></i>
+              <strong>
+                <?php print t('Share'); ?>
+                <i class="fa fa-share"></i>
+              </strong>
             </a>
           </li>
 
           <li class="dropdown">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown"><?php print $language->native; ?> <b class="caret"></b></a>
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown"><?php print $language->native; ?> <span class="caret"></span></a>
             <?php print $language_menu; ?>
           </li>
         </ul>

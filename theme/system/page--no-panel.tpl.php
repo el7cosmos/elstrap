@@ -32,10 +32,12 @@
 
         <ul class="nav navbar-nav pull-right">
           <li>
-            <a data-toggle="modal" href="#share">
-              <?php print t('Share'); ?>
-              <i class="fa fa-share"></i>
-            </a>
+            <strong>
+              <a data-toggle="modal" href="#share">
+                <?php print t('Share'); ?>
+                <i class="fa fa-share"></i>
+              </a>
+            </strong>
           </li>
 
           <li class="dropdown">
