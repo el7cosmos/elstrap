@@ -81,17 +81,7 @@ function elstrap_preprocess_page(&$variables) {
 
   $variables['language_menu'] = theme('links__locale_menu', $vars);
 
-  if (!drupal_is_front_page()) {
-    if (isset($content['system_main']['nodes']) || isset($content['system_main']['pager'])) {
-      $variables['theme_hook_suggestions'][] = 'page__no_panel';
-    }
-    if (in_array('page__article', $variables['theme_hook_suggestions'])) {
-      $variables['theme_hook_suggestions'][] = 'page__no_panel';
-    }
-    if (in_array('page__infographics', $variables['theme_hook_suggestions'])) {
-      $variables['theme_hook_suggestions'][] = 'page__no_panel';
-    }
-  }
+  $variables['panel'] = isset($GLOBALS['pager_total']) ? FALSE : TRUE;
 }
 
 /**
