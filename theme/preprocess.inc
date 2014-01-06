@@ -133,6 +133,17 @@ function elstrap_preprocess_html_tag(&$variables) {
 }
 
 /**
+ * Prerocess variables for theme_username()
+ *
+ * @see theme_username()
+ */
+function elstrap_preprocess_username(&$variables) {
+  if (isset($variables['attributes_array']['xml:lang'])) {
+    $variables['attributes_array']['lang'] = $variables['attributes_array']['xml:lang'];
+  }
+}
+
+/**
  * Preprocess variables for theme_field()
  *
  * @see theme_field()
