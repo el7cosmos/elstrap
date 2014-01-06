@@ -146,7 +146,7 @@ function elstrap_links__node(&$variables) {
       $links[] = l($link['title'], $link['href'], $link);
     }
   }
-  $output = implode(' &middot ', $links);
+  $output = implode(' &middot; ', $links);
 
   return $output;
 }
@@ -234,19 +234,19 @@ function elstrap_menu_link__main_menu(array $variables) {
 
   switch ($element['#href']) {
     case 'pagespeed-insight':
-      $element['#title'] = '<span class="fa fa-tachometer"></span> ' . t($element['#title']) . '</span>';
+      $element['#title'] = '<span class="fa fa-tachometer"></span> ' . t($element['#title']);
       break;
     case 'contact':
-      $element['#title'] = '<span class="fa fa-envelope"></span> ' . t($element['#title']) . '</span>';
+      $element['#title'] = '<span class="fa fa-envelope"></span> ' . t($element['#title']);
       break;
   }
 
   switch ($element['#original_link']['link_title']) {
     case 'Article':
-      $element['#title'] = '<span class="fa fa-pencil"></span> ' . t('Article') . '</span> <span class="caret"></span>';
+      $element['#title'] = '<span class="fa fa-pencil"></span> ' . t('Article') . ' <span class="caret"></span>';
       break;
     case 'Infographics':
-      $element['#title'] = '<span class="fa fa-bar-chart-o"></span> ' . t($element['#title']) . '</span>';
+      $element['#title'] = '<span class="fa fa-bar-chart-o"></span> ' . t($element['#title']);
       break;
     case 'Internet':
       $element['#title'] = '<span class="fa fa-globe"></span> ' . t($element['#title']);

@@ -33,4 +33,5 @@ bootstrap_include('elstrap', 'theme/common.inc');
 bootstrap_include('elstrap', 'theme/alter.inc');
 
 bootstrap_include('elstrap', 'theme/preprocess.inc');
+bootstrap_include('elstrap', 'theme/process.inc');
 bootstrap_include('elstrap', 'theme/theme.inc');
