@@ -160,7 +160,7 @@ function elstrap_form_pagespeed_insight_analyze_form_alter(&$form, &$form_state,
   $form['url']['#field_prefix'] = '<div class="input-group"><span class="input-group-addon fa fa-globe"></span>';
   $form['url']['#field_suffix'] = '</span></div>';
 
-  $form['actions']['submit']['#label'] = '<i class="fa fa-tachometer"></i> ' . $form['actions']['submit']['#value'];
+  $form['actions']['submit']['#label'] = '<span class="fa fa-tachometer"></span> ' . $form['actions']['submit']['#value'];
   $form['actions']['submit']['#attributes']['class'][] = 'btn-primary';
   $form['actions']['submit']['#attributes']['class'][] = 'btn-lg';
   $form['actions']['submit']['#attributes']['class'][] = 'btn-block';

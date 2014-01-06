@@ -1,10 +1,10 @@
 <div class="panel panel-<?php print $state; ?>">
   <div class="panel-heading">
-    <h4 class="panel-title">
+    <h2 class="panel-title">
       <a data-toggle="collapse" href="#<?php print $id; ?>">
         <?php print $rule['localizedRuleName']; ?>
       </a>
-    </h4>
+    </h2>
   </div>
   <div id="<?php print $id; ?>" class="panel-collapse collapse<?php print $rule['ruleImpact'] ? ' in' : ''; ?>">
     <div class="panel-body">

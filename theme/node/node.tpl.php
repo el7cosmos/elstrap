@@ -88,7 +88,7 @@
     <div class="panel-heading">
       <h2<?php print $title_attributes; ?>><a href="<?php print $node_url; ?>"><?php print $title; ?></a></h2>
       <strong class="pull-right">
-        <i class="fa fa-<?php print elstrap_node_type_icon($node->type); ?>"></i>
+        <span class="fa fa-<?php print elstrap_node_type_icon($node->type); ?>"></span>
       </strong>
       <div class="clearfix"></div>
     </div>
@@ -98,8 +98,8 @@
 
   <?php if ($page && $display_submitted): ?>
     <div class="panel-heading">
-      <div class="submitted">
-        <small><?php print $submitted; ?> <?php print render($content['field_category']); ?></small>
+      <div class="submitted small">
+        <?php print $submitted; ?> <?php print render($content['field_category']); ?>
       </div>
     </div>
   <?php endif; ?>
@@ -117,16 +117,16 @@
 
   <?php print render($content['comments']); ?>
 
-  <div class="panel-footer">
+  <div class="panel-footer small">
     <?php if (!$page): ?>
       <?php if ($display_submitted): ?>
         <div class="submitted pull-left">
-          <small><?php print $submitted; ?> <?php print render($content['field_category']); ?></small>
+          <?php print $submitted; ?> <?php print render($content['field_category']); ?>
         </div>
       <?php endif; ?>
 
       <div class="pull-right">
-        <small><?php print render($content['links']); ?></small>
+        <?php print render($content['links']); ?>
       </div>
 
       <div class="clearfix"></div>

@@ -48,5 +48,5 @@
   <?php $categories[] = render($item); ?>
 <?php endforeach; ?>
 
-&middot; <i class="fa fa-folder-open"></i>
+&middot; <span class="fa fa-folder-open"></span>
 <?php print implode(', ', $categories); ?>

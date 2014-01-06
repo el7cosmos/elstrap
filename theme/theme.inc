@@ -134,10 +134,10 @@ function elstrap_links__node(&$variables) {
   $links = array();
 
   if (isset($variables['links']['node-readmore'])) {
-    $variables['links']['node-readmore']['title'] .= '&nbsp;<i class="fa fa-arrow-circle-right"></i>';
+    $variables['links']['node-readmore']['title'] .= '&nbsp;<span class="fa fa-arrow-circle-right"></span>';
   }
   if (isset($variables['links']['disqus_comments_num'])) {
-    $variables['links']['disqus_comments_num']['title'] .= '&nbsp;<i class="fa fa-comments-o"></i>';
+    $variables['links']['disqus_comments_num']['title'] .= '&nbsp;<span class="fa fa-comments-o"></span>';
     $variables['links']['disqus_comments_num']['html'] = TRUE;
   }
 
@@ -234,28 +234,28 @@ function elstrap_menu_link__main_menu(array $variables) {
 
   switch ($element['#href']) {
     case 'pagespeed-insight':
-      $element['#title'] = '<i class="fa fa-tachometer"></i> ' . t($element['#title']) . '</span>';
+      $element['#title'] = '<span class="fa fa-tachometer"></span> ' . t($element['#title']) . '</span>';
       break;
     case 'contact':
-      $element['#title'] = '<i class="fa fa-envelope"></i> ' . t($element['#title']) . '</span>';
+      $element['#title'] = '<span class="fa fa-envelope"></span> ' . t($element['#title']) . '</span>';
       break;
   }
 
   switch ($element['#original_link']['link_title']) {
     case 'Article':
-      $element['#title'] = '<i class="fa fa-pencil"></i> ' . t('Article') . '</span> <span class="caret"></span>';
+      $element['#title'] = '<span class="fa fa-pencil"></span> ' . t('Article') . '</span> <span class="caret"></span>';
       break;
     case 'Infographics':
-      $element['#title'] = '<i class="fa fa-bar-chart-o"></i> ' . t($element['#title']) . '</span>';
+      $element['#title'] = '<span class="fa fa-bar-chart-o"></span> ' . t($element['#title']) . '</span>';
       break;
     case 'Internet':
-      $element['#title'] = '<i class="fa fa-globe"></i> ' . t($element['#title']);
+      $element['#title'] = '<span class="fa fa-globe"></span> ' . t($element['#title']);
       break;
     case 'Programming':
-      $element['#title'] = '<i class="fa fa-code"></i> ' . t($element['#title']);
+      $element['#title'] = '<span class="fa fa-code"></span> ' . t($element['#title']);
       break;
     case 'Technology':
-      $element['#title'] = '<i class="fa fa-rocket"></i> ' . t($element['#title']);
+      $element['#title'] = '<span class="fa fa-rocket"></span> ' . t($element['#title']);
       break;
   }
 
@@ -302,7 +302,7 @@ function elstrap_pagespeed_insight_score($variables) {
     $state = 'success';
   }
 
-  return '<p id="score" class="lead text-center text-' . $state . '"><span class="fa-5x"><i class="fa fa-tachometer"></i> ' . $score . '/100</span></p>';
+  return '<p id="score" class="lead text-center text-' . $state . '"><span class="fa-5x"><span class="fa fa-tachometer"></span> ' . $score . '/100</span></p>';
 }
 
 /**
@@ -323,7 +323,7 @@ function elstrap_pagespeed_insight_header($variables) {
 
     foreach ($header['args'] as $key => $arg) {
       if ($arg['type'] == 'HYPERLINK') {
-        $header['format'] .= ' <small>(' . l($arg['value'] . ' <i class="fa fa-external-link"></i>', $arg['value'], $options) . ')</small>';
+        $header['format'] .= ' <span class="small">(' . l($arg['value'] . ' <span class="fa fa-external-link"></span>', $arg['value'], $options) . ')</span>';
       }
       else {
         $search[] = "\$" . ($key + 1);
@@ -357,7 +357,7 @@ function elstrap_pagespeed_insight_result($variables) {
     foreach ($result['args'] as $key => $arg) {
       $search[] = "\$" . ($key + 1);
       if ($arg['type'] == 'URL') {
-        $replace[] = l(_filter_url_trim($arg['value'], 77) . ' <i class="fa fa-external-link"></i>', $arg['value'], $options);
+        $replace[] = l(_filter_url_trim($arg['value'], 77) . ' <span class="fa fa-external-link"></span>', $arg['value'], $options);
       }
       else {
         $replace[] = '<span class="badge">' .$arg['value'] . '</span>';

@@ -14,7 +14,7 @@
 <body class="<?php print $classes; ?>" <?php print $attributes;?>>
   <a href="#main-content" class="sr-only"><?php print t('Skip to main content'); ?></a>
   <div id="preloader" class="modal-backdrop text-primary">
-    <i class="fa fa-spinner fa-spin fa-5x"></i>
+    <span class="fa fa-spinner fa-spin fa-5x"></span>
   </div>
   <?php print $page_top; ?>
   <?php print $page; ?>

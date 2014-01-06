@@ -117,7 +117,7 @@ function elstrap_preprocess_node(&$variables) {
     $variables['title_attributes_array']['class'][] = 'pull-left';
   }
 
-  $variables['submitted'] = t('<i class="fa fa-calendar"></i> !datetime &middot; <i class="fa fa-user"></i> !username', array('!username' => $variables['name'], '!datetime' => theme('html5_tools_time', array('date' => $variables['date'], 'isodate' => format_date($variables['created'], 'html5_tools_iso8601')))));
+  $variables['submitted'] = t('<span class="fa fa-calendar"></span> !datetime &middot; <span class="fa fa-user"></span> !username', array('!username' => $variables['name'], '!datetime' => theme('html5_tools_time', array('date' => $variables['date'], 'isodate' => format_date($variables['created'], 'html5_tools_iso8601')))));
 }
 
 /**

@@ -1,10 +1,10 @@
 <div class="panel panel-info">
   <div class="panel-heading">
-    <h4 class="panel-title">
+    <h2 class="panel-title">
       <a data-toggle="collapse" href="#statistic">
         <?php print t('Page Statistic'); ?>
       </a>
-    </h4>
+    </h2>
   </div>
   <div id="statistic" class="panel panel-collapse collapse">
     <div class="panel-body text-center">

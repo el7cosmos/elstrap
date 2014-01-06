@@ -35,7 +35,7 @@
             <a data-toggle="modal" href="#share">
               <strong>
                 <?php print t('Share'); ?>
-                <i class="fa fa-share"></i>
+                <span class="fa fa-share"></span>
               </strong>
             </a>
           </li>
@@ -112,11 +112,11 @@
 
 <footer class="footer container">
   <div class="row">
-    <div id="touch" class="col-sm-4">
+    <div class="col-sm-4">
       <?php print render($page['footer_left']); ?>
     </div>
 
-    <div id="touch" class="col-sm-4">
+    <div class="col-sm-4">
       <?php print render($page['footer_middle']); ?>
     </div>
 
@@ -127,10 +127,12 @@
         </div>
 
         <div class="panel-body text-center">
-          <a href="https://github.com/el7cosmos" title="<?php print t('Touch me on @service', array('@service' => 'github')); ?>" class="github" target="_blank"><i class="fa fa-github-square fa-5x"></i><span class="sr-only"> Github</span></a>
-          <a href="https://twitter.com/el_abee" title="<?php print t('Touch me on @service', array('@service' => 'twitter')); ?>" class="twitter" target="_blank"><i class="fa fa-twitter-square fa-5x"></i><span class="sr-only"> Twitter</span></a>
-          <a href="https://www.facebook.com/pages/eL-Abee/197066260350131" title="<?php print t('Touch me on @service', array('@service' => 'facebook')); ?>" class="facebook" target="_blank"><i class="fa fa-facebook-square fa-5x"></i><span class="sr-only"> Facebook</span></a>
-          <a href="https://plus.google.com/107523342151360625331" title="<?php print t('Touch me on @service', array('@service' => 'google+')); ?>" class="google-plus" target="_blank"><i class="fa fa-google-plus-square fa-5x"></i><span class="sr-only"> Google+</span></a>
+          <ul class="list-inline">
+            <li><a href="https://github.com/el7cosmos" title="<?php print t('Touch me on @service', array('@service' => 'github')); ?>" class="github" target="_blank"><span class="fa fa-github-square fa-5x"></span><span class="sr-only"> Github</span></a></li>
+            <li><a href="https://twitter.com/el_abee" title="<?php print t('Touch me on @service', array('@service' => 'twitter')); ?>" class="twitter" target="_blank"><span class="fa fa-twitter-square fa-5x"></span><span class="sr-only"> Twitter</span></a></li>
+            <li><a href="https://www.facebook.com/pages/eL-Abee/197066260350131" title="<?php print t('Touch me on @service', array('@service' => 'facebook')); ?>" class="facebook" target="_blank"><span class="fa fa-facebook-square fa-5x"></span><span class="sr-only"> Facebook</span></a></li>
+            <li><a href="https://plus.google.com/107523342151360625331" title="<?php print t('Touch me on @service', array('@service' => 'google+')); ?>" class="google-plus" target="_blank"><span class="fa fa-google-plus-square fa-5x"></span><span class="sr-only"> Google+</span></a></li>
+          </ul>
         </div>
       </div>
     </div>

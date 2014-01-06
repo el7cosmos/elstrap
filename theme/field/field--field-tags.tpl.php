@@ -46,6 +46,6 @@
 ?>
 <?php foreach ($items as $delta => $item): ?>
   <span class="label label-<?php print elstrap_state_variable($delta); ?>"<?php print $item_attributes[$delta]; ?>>
-    <small><i class="fa fa-tag"></i> <?php print render($item); ?></small>
+    <span class="fa fa-tag"></span> <?php print render($item); ?>
   </span>
 <?php endforeach; ?>
