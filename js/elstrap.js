@@ -17,7 +17,7 @@ $(window).load(function() {
 Drupal.behaviors.elstrap = {
   attach: function (context, settings) {
     var rendered = false;
-    $('#statistic').on('shown.bs.collapse', function () {
+    $('#statistic').on('shown.bs.collapse', function() {
       if (!rendered) {
         var resources = $('#resources').get(0);
         if (typeof resources !== 'undefined') {
@@ -26,7 +26,14 @@ Drupal.behaviors.elstrap = {
           rendered = true;
         };
       };
-    })
+    });
+
+    $('.modal').on('show.bs.modal', function(e) {
+      $(settings.jqueryNicescroll.element).getNiceScroll().hide();
+    });
+    $('.modal').on('hidden.bs.modal', function(e) {
+      $(settings.jqueryNicescroll.element).getNiceScroll().show();
+    });
   }
 };
 
