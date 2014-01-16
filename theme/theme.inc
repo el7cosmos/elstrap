@@ -110,8 +110,10 @@ function elstrap_links__locale_menu($variables) {
     if ($i == $num_links) {
       $class[] = 'last';
     }
-    if ($link['attributes']['lang'] == $variables['language']) {
+    if ($link['attributes']['lang'] == $variables['language'] || !isset($link['href'])) {
       $class[] = 'disabled';
+      $link['href'] = '#';
+      $link['external'] = TRUE;
     }
     $output .= '<li' . drupal_attributes(array('class' => $class)) . '>';
 
