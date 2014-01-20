@@ -8,7 +8,7 @@
   </div>
   <div id="statistic" class="panel panel-collapse collapse">
     <div class="panel-body text-center">
-      <canvas id="resources"></canvas>
+      <canvas id="resources" <?php print drupal_attributes(array('data-stats' => $data_stats)); ?>></canvas>
     </div>
 
     <ul class="list-group">
