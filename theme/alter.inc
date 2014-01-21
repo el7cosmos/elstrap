@@ -22,54 +22,46 @@ function elstrap_js_alter(&$javascript) {
 function elstrap_page_alter(&$page) {
   global $language;
   $path = drupal_is_front_page() ? '<front>' : current_path();
+  $abs_path = url($path, array('absolute' => TRUE));
   $title = drupal_get_title();
 
-  $body['fb_like'] = array(
-    '#type' => 'html_tag',
-    '#tag' => 'div',
-    '#attributes' => array(
-      'class' => array('fb-like'),
-      'data-href' => url($path, array('absolute' => TRUE)),
-      'data-layout' => 'box_count',
+  $fb_share_options = array(
+    'query' => array(
+      'u' => $abs_path,
     ),
-    '#value' => '',
   );
   $body['fb_share'] = array(
-    '#type' => 'html_tag',
-    '#tag' => 'div',
-    '#attributes' => array(
-      'class' => array('fb-share-button'),
-      'data-href' => url($path, array('absolute' => TRUE)),
-      'data-type' => 'box_count',
+    '#type' => 'link',
+    '#title' => '<span class="fa fa-facebook"></span> | Facebook',
+    '#href' => url('https://www.facebook.com/sharer/sharer.php', $fb_share_options),
+    '#options' => array(
+      'html' => TRUE,
+      'attributes' => array(
+        'class' => array('btn', 'btn-block', 'btn-lg', 'btn-primary'),
+        'target' => '_blank',
+      ),
     ),
-    '#value' => '',
+  );
+
+  $tweet_options = array(
+    'query' => array(
+      'url' => $abs_path,
+      'via' => 'el_abee',
+      'text' => $title,
+    ),
   );
   $body['tweet_button'] = array(
     '#type' => 'link',
-    '#title' => 'Tweet',
-    '#href' => 'https://twitter.com/share',
+    '#title' => '<span class="fa fa-twitter"></span> | Twitter',
+    '#href' => url('https://twitter.com/intent/tweet', $tweet_options),
     '#options' => array(
+      'html' => TRUE,
       'attributes' => array(
-        'class' => array('twitter-share-button'),
-        'data-url' => url($path, array('absolute' => TRUE)),
-        'data-via' => variable_get('twitter_username'),
-        'data-count' => 'vertical',
-        'data-lang' => $language->language,
-      ),
-    ),
-    '#attached' => array(
-      'js' => array(
-        path_to_theme() . '/js/elstrap.twitter.js' => array(
-          'type' => 'file',
-          'scope' => 'footer',
-          'group' => JS_THEME,
-        ),
+        'class' => array('btn', 'btn-block', 'btn-lg', 'btn-info'),
+        'target' => '_blank',
       ),
     ),
   );
-  if (!empty($title)) {
-    $body['tweet_button']['#options']['attributes']['data-text'] = drupal_get_title();
-  }
 
   if ($language->language == 'en') {
     $gplus_lang = 'en_US';
@@ -77,49 +69,23 @@ function elstrap_page_alter(&$page) {
   else {
     $gplus_lang = 'id';
   }
-
+  $gplus_options = array(
+    'query' => array(
+      'url' => $abs_path,
+      'hl' => $gplus_lang,
+    ),
+  );
   $body['google_plus'] = array(
-    '#attached' => array(
-      'js' => array(
-        array(
-          'data' => array(
-            'elstrapGooglePlus' => array(
-              'lang' => $gplus_lang,
-              'publisherId' => variable_get('google_plus_publisher_id'),
-            ),
-          ),
-          'type' => 'setting',
-        ),
-        path_to_theme() . '/js/elstrap.gplus.js' => array(
-          'type' => 'file',
-          'scope' => 'footer',
-          'group' => JS_THEME,
-        ),
+    '#type' => 'link',
+    '#title' => '<span class="fa fa-google-plus"></span> | Google+',
+    '#href' => url('https://plus.google.com/share', $gplus_options),
+    '#options' => array(
+      'html' => TRUE,
+      'attributes' => array(
+        'class' => array('btn', 'btn-block', 'btn-lg', 'btn-danger'),
+        'target' => '_blank',
       ),
     ),
-  );
-  $body['google_plus']['one'] = array(
-    '#type' => 'html_tag',
-    '#tag' => 'div',
-    '#attributes' => array(
-      'class' => array('g-plusone'),
-      'data-size' => 'tall',
-      'data-href' => url($path, array('absolute' => TRUE)),
-    ),
-    '#value' => '',
-  );
-  $body['google_plus']['share'] = array(
-    '#type' => 'html_tag',
-    '#tag' => 'div',
-    '#attributes' => array(
-      'class' => array('g-plus'),
-      'data-action' => 'share',
-      'data-annotation' => 'vertical-bubble',
-      'data-href' => url($path, array('absolute' => TRUE)),
-      'data-width' => 70,
-      'data-height' => 60,
-    ),
-    '#value' => '',
   );
 
   $page['page_bottom']['share'] = array(
