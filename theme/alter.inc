@@ -133,7 +133,7 @@ function elstrap_form_pagespeed_insight_analyze_form_alter(&$form, &$form_state,
   $form['actions']['submit']['#prefix'] = '<div class="form-group">';
   $form['actions']['submit']['#suffix'] = '</div>';
 
-  $form['#attached']['js'][path_to_theme() . '/js/elstrap.pagespeed-insight.js'] = array(
+  $form['#attached']['js'][drupal_get_path('theme', 'elstrap') . '/js/elstrap.pagespeed-insight.js'] = array(
     'type' => 'file',
     'scope' => 'footer',
     'group' => JS_THEME,
