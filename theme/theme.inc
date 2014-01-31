@@ -270,6 +270,27 @@ function elstrap_menu_link__main_menu(array $variables) {
 }
 
 /**
+ * Overrides theme_menu_tree().
+ */
+function elstrap_menu_tree(&$variables) {
+  return '<ul class="nav">' . $variables['tree'] . '</ul>';
+}
+
+/**
+ * eL Strap theme wrapper function for the primary menu links.
+ */
+function elstrap_menu_tree__primary(&$variables) {
+  return '<ul class="nav navbar-nav">' . $variables['tree'] . '</ul>';
+}
+
+/**
+ * el Strap theme wrapper function for the secondary menu links.
+ */
+function elstrap_menu_tree__secondary(&$variables) {
+  return '<ul class="nav navbar-nav navbar-right">' . $variables['tree'] . '</ul>';
+}
+
+/**
  * Overrides theme_image_style().
  */
 function elstrap_image_style($variables) {

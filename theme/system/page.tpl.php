@@ -1,6 +1,13 @@
-<header id="navbar" role="banner" class="<?php print $navbar_classes; ?>">
+<nav id="navbar" role="navigation" class="<?php print $navbar_classes; ?>">
   <div class="container">
     <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+        <span class="sr-only"><?php print t('Toggle navigation'); ?></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+
       <?php if ($logo): ?>
       <a class="logo navbar-btn pull-left" href="<?php print $front_page; ?>" title="<?php print t('Home'); ?>">
         <img src="<?php print $logo; ?>" alt="<?php print t('Home'); ?>" />
@@ -10,49 +17,39 @@
       <?php if (!empty($site_name)): ?>
       <a class="name navbar-brand" href="<?php print $front_page; ?>" title="<?php print t('Home'); ?>"><?php print $site_name; ?></a>
       <?php endif; ?>
-
-      <!-- .btn-navbar is used as the toggle for collapsed navbar content -->
-      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-        <span class="sr-only">Toggle navigation</span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
     </div>
 
-    <div class="navbar-collapse collapse">
-      <nav role="navigation">
-        <?php if (!empty($primary_nav)): ?>
-          <?php print render($primary_nav); ?>
-        <?php endif; ?>
+    <div class="collapes navbar-collapse">
+      <?php if (!empty($primary_nav)): ?>
+        <?php print render($primary_nav); ?>
+      <?php endif; ?>
 
-        <?php if (!empty($secondary_nav)): ?>
-          <?php print render($secondary_nav); ?>
-        <?php endif; ?>
+      <?php if (!empty($secondary_nav)): ?>
+        <?php print render($secondary_nav); ?>
+      <?php endif; ?>
 
-        <ul class="nav navbar-nav pull-right">
-          <li>
-            <a data-toggle="modal" href="#share">
-              <strong>
-                <?php print t('Share'); ?>
-                <span class="fa fa-share"></span>
-              </strong>
-            </a>
-          </li>
+      <ul class="nav navbar-nav navbar-right">
+        <li>
+          <a data-toggle="modal" href="#share">
+            <strong>
+              <?php print t('Share'); ?>
+              <span class="fa fa-share"></span>
+            </strong>
+          </a>
+        </li>
 
-          <li class="dropdown">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown"><?php print $language->native; ?> <span class="caret"></span></a>
-            <?php print $language_menu; ?>
-          </li>
-        </ul>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown"><?php print $language->native; ?> <span class="caret"></span></a>
+          <?php print $language_menu; ?>
+        </li>
+      </ul>
 
-        <?php if (!empty($page['navigation'])): ?>
-          <?php print render($page['navigation']); ?>
-        <?php endif; ?>
-      </nav>
+      <?php if (!empty($page['navigation'])): ?>
+        <?php print render($page['navigation']); ?>
+      <?php endif; ?>
     </div>
   </div>
-</header>
+</nav>
 
 <div class="main-container container">
 

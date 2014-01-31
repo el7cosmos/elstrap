@@ -1,73 +1,17 @@
 // Insert your styling here.
 
-// body {
-//   background-color: @jumbotron-bg;
-//   background-attachment: fixed;
-//   @media (min-width: 1601px) {
-//     background-image: url('../images/background/1920.jpg');
-//   }
-//   @media (min-width: 1441px) and (max-width: 1600px) {
-//     background-image: url('../images/background/1600.jpg');
-//   }
-//   @media (min-width: 1281px) and (max-width: 1440px) {
-//     background-image: url('../images/background/1440.jpg');
-//   }
-//   @media (min-width: 769px) and (max-width: 1280px) {
-//     background-image: url('../images/background/1280.jpg');
-//   }
-//   @media (min-width: 641px) and (max-width: 768px) {
-//     background-image: url('../images/background/768.jpg');
-//   }
-//   @media (min-width: 481px) and (max-width: 640px) {
-//     background-image: url('../images/background/640.jpg');
-//   }
-//   @media (min-width: 321px) and (max-width: 480px) {
-//     background-image: url('../images/background/480.jpg');
-//   }
-//   @media (min-width: 273px) and (max-width: 320px) {
-//     background-image: url('../images/background/320.jpg');
-//   }
-//   @media (max-width: 272) {
-//     background-image: url('../images/background/272.jpg');
-//   }
-// }
+li kbd {
+  border-radius: 0;
+}
+li:first-child kbd {
+  .border-top-radius(3px);
+  .border-bottom-radius(0);
+}
+li:last-child kbd {
+  .border-top-radius(0);
+  .border-bottom-radius(3px);
+}
 
-/*.jumbotron,
-.breadcrumb,
-.node.panel,
-.block.panel,
-.panel.transparent {
-  @media (min-width: @grid-float-breakpoint) {
-    // .box-shadow(1px 2px 3px 1px rgba(0,0,0,.5));
-  }
-}
-.jumbotron {
-  .transition(background-color .25s ease);
-  @media (min-width: @grid-float-breakpoint) {
-    background-color: rgba(238,238,238,.5);
-    &:hover {
-      background-color: rgba(238,238,238,.75);
-    };
-  }
-}
-.breadcrumb {
-  .transition(background-color .25s ease);
-  @media (min-width: @grid-float-breakpoint) {
-    background-color: rgba(245,245,245,.5);
-    &:hover {
-      background-color: rgba(245,245,245,.75);
-    };
-  }
-}
-.panel.transparent {
-  .transition(background-color .25s ease);
-  @media (min-width: @grid-float-breakpoint) {
-    background-color: rgba(255,255,255,.5);
-    &:hover {
-      background-color: rgba(255,255,255,.75);
-    };
-  }
-}*/
 .panel-heading a[data-toggle="collapse"] {
   display: block;
 }

@@ -17,6 +17,13 @@ function elstrap_js_alter(&$javascript) {
 }
 
 /**
+ * Implements hook_theme_registry_alter().
+ */
+function elstrap_theme_registry_alter(&$theme_registry) {
+  $theme_registry['bootstrap_modal']['variables']['size'] = NULL;
+}
+
+/**
  * Implements hook_page_alter().
  */
 function elstrap_page_alter(&$page) {
@@ -32,7 +39,7 @@ function elstrap_page_alter(&$page) {
   );
   $body['fb_share'] = array(
     '#type' => 'link',
-    '#title' => '<span class="fa fa-facebook"></span> | Facebook',
+    '#title' => '<span class="fa fa-facebook"></span> Facebook',
     '#href' => url('https://www.facebook.com/sharer/sharer.php', $fb_share_options),
     '#options' => array(
       'html' => TRUE,
@@ -52,7 +59,7 @@ function elstrap_page_alter(&$page) {
   );
   $body['tweet_button'] = array(
     '#type' => 'link',
-    '#title' => '<span class="fa fa-twitter"></span> | Twitter',
+    '#title' => '<span class="fa fa-twitter"></span> Twitter',
     '#href' => url('https://twitter.com/intent/tweet', $tweet_options),
     '#options' => array(
       'html' => TRUE,
@@ -77,7 +84,7 @@ function elstrap_page_alter(&$page) {
   );
   $body['google_plus'] = array(
     '#type' => 'link',
-    '#title' => '<span class="fa fa-google-plus"></span> | Google+',
+    '#title' => '<span class="fa fa-google-plus"></span> Google+',
     '#href' => url('https://plus.google.com/share', $gplus_options),
     '#options' => array(
       'html' => TRUE,
@@ -90,6 +97,7 @@ function elstrap_page_alter(&$page) {
 
   $page['page_bottom']['share'] = array(
     '#theme' => 'bootstrap_modal',
+    '#size' => 'sm',
     '#heading' => t('Share'),
     '#body' => $body,
     '#attributes' => array(

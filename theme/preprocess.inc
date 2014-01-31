@@ -174,6 +174,17 @@ function elstrap_preprocess_image_formatter(&$variables) {
 }
 
 /**
+ * Preprocess variables for theme_bootstrap_modal().
+ *
+ * @see: theme_bootstrap_modal()
+ */
+function elstrap_preprocess_bootstrap_modal(&$variables) {
+  if (!is_null($variables['size'])) {
+    $variables['attributes']['class'][] = 'bs-modal-sm';
+  }
+}
+
+/**
  * Preprocess variables for theme_pagespeed_insight_rule()
  *
  * @see theme_pagespeed_insight_rule()
