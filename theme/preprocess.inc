@@ -69,16 +69,13 @@ function elstrap_preprocess_page(&$variables) {
     $variables['content_column_class'] = NULL;
   }
 
-  $content = $variables['page']['content'];
   $path = drupal_is_front_page() ? '<front>' : $_GET['q'];
   $links = language_negotiation_get_switch_links('language', $path);
-
   $vars = array(
     'links' => $links->links,
     'attributes' => array('class' => array('dropdown-menu')),
     'language' => $variables['language']->language,
   );
-
   $variables['language_menu'] = theme('links__locale_menu', $vars);
 
   $variables['panel'] = isset($GLOBALS['pager_total']) ? FALSE : TRUE;
