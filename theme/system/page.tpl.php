@@ -24,25 +24,27 @@
         <?php print render($primary_nav); ?>
       <?php endif; ?>
 
-      <?php if (!empty($secondary_nav)): ?>
-        <?php print render($secondary_nav); ?>
-      <?php endif; ?>
+      <div class="navbar-right">
+        <ul class="nav navbar-nav">
+          <li>
+            <a data-toggle="modal" href="#share">
+              <strong>
+                <?php print t('Share'); ?>
+                <span class="fa fa-share"></span>
+              </strong>
+            </a>
+          </li>
 
-      <ul class="nav navbar-nav navbar-right">
-        <li>
-          <a data-toggle="modal" href="#share">
-            <strong>
-              <?php print t('Share'); ?>
-              <span class="fa fa-share"></span>
-            </strong>
-          </a>
-        </li>
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown"><?php print $language->native; ?> <span class="caret"></span></a>
+            <?php print $language_menu; ?>
+          </li>
+        </ul>
 
-        <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown"><?php print $language->native; ?> <span class="caret"></span></a>
-          <?php print $language_menu; ?>
-        </li>
-      </ul>
+        <?php if (!empty($secondary_nav)): ?>
+          <?php print render($secondary_nav); ?>
+        <?php endif; ?>
+      </div>
 
       <?php if (!empty($page['navigation'])): ?>
         <?php print render($page['navigation']); ?>

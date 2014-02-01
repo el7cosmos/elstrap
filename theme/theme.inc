@@ -287,7 +287,7 @@ function elstrap_menu_tree__primary(&$variables) {
  * el Strap theme wrapper function for the secondary menu links.
  */
 function elstrap_menu_tree__secondary(&$variables) {
-  return '<ul class="nav navbar-nav navbar-right">' . $variables['tree'] . '</ul>';
+  return '<ul class="nav navbar-nav">' . $variables['tree'] . '</ul>';
 }
 
 /**
