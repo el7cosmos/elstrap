@@ -19,6 +19,10 @@
  * @see includes/registry.inc
  */
 
+if (!function_exists('bootstrap_include')) {
+  include_once drupal_get_path('theme', 'bootstrap') . '/theme/common.inc';
+}
+
 /**
  * Include common functions used through out theme.
  */
