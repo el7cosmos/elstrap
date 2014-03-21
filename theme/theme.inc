@@ -43,7 +43,7 @@ function elstrap_status_messages($variables) {
 
   foreach (drupal_get_messages($display) as $type => $messages) {
     $class = (isset($status_class[$type])) ? ' alert-' . $status_class[$type] : '';
-    $output .= "<div class=\"alert$class\">\n";
+    $output .= "<div class=\"alert alert-block$class messages $type\">\n";
 
     if (!empty($status_heading[$type])) {
       $output .= '<h4 class="element-invisible">' . $status_heading[$type] . "</h4>\n";
