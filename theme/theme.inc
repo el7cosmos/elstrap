@@ -8,6 +8,24 @@
 /**
  * Overrides theme_button().
  */
+function elstrap_html_tag__site_slogan($variables) {
+  $element = $variables['element'];
+  $attributes = isset($element['#attributes']) ? drupal_attributes($element['#attributes']) : '';
+  $output = '<div class="jumbotron"><' . $element['#tag'] . $attributes . '>';
+  if (isset($element['#value_prefix'])) {
+    $output .= $element['#value_prefix'];
+  }
+  $output .= $element['#value'];
+  if (isset($element['#value_suffix'])) {
+    $output .= $element['#value_suffix'];
+  }
+  $output .= '</' . $element['#tag'] . "></div>\n";
+  return $output;
+}
+
+/**
+ * Overrides theme_button().
+ */
 function elstrap_button($variables) {
   $label = isset($variables['element']['#label']) ? $variables['element']['#label'] : $variables['element']['#value'];
 
@@ -64,7 +82,6 @@ function elstrap_status_messages($variables) {
   }
   return $output;
 }
-
 
 /**
  * Overrides theme_links__locale_menu().
@@ -134,9 +151,9 @@ function elstrap_links__node(&$variables) {
 }
 
 /**
- * Overrides theme_menu_link().
+ * Overrides theme_menu_link__main_menu().
  */
-function elstrap_menu_link(array $variables) {
+function elstrap_menu_link__main_menu(array $variables) {
   $element = $variables['element'];
   $sub_menu = '';
 
@@ -146,66 +163,20 @@ function elstrap_menu_link(array $variables) {
     if (($element['#original_link']['menu_name'] == 'management') && (module_exists('navbar'))) {
       $sub_menu = drupal_render($element['#below']);
     }
-    else {
-      // Add our own wrapper.
-      unset($element['#below']['#theme_wrappers']);
-      // $sub_menu = '<ul class="dropdown-menu">' . drupal_render($element['#below']) . '</ul>';
-      $element['#localized_options']['attributes']['class'][] = 'dropdown-toggle';
-      $element['#localized_options']['attributes']['data-toggle'] = 'dropdown';
-
-      // Check if this element is nested within another.
-      if ((!empty($element['#original_link']['depth'])) && ($element['#original_link']['depth'] > 1)) {
-        // Generate as dropdown submenu.
-        // $element['#attributes']['class'][] = 'dropdown-submenu';
-      }
-      else {
-        // Generate as standard dropdown.
-        $element['#attributes']['class'][] = 'dropdown';
-        $element['#localized_options']['html'] = TRUE;
-        $element['#title'] .= ' <span class="caret"></span>';
-      }
-
-      // Set dropdown trigger element to # to prevent inadvertant page loading
-      // when a submenu link is clicked.
-      $element['#localized_options']['attributes']['data-target'] = '#';
-    }
-  }
-  // On primary navigation menu, class 'active' is not set on active menu item.
-  // @see https://drupal.org/node/1896674
-  if (($element['#href'] == $_GET['q'] || ($element['#href'] == '<front>' && drupal_is_front_page())) && (empty($element['#localized_options']['language']))) {
-    $element['#attributes']['class'][] = 'active';
-  }
-  $output = l($element['#title'], $element['#href'], $element['#localized_options']);
-  return '<li' . drupal_attributes($element['#attributes']) . '>' . $output . $sub_menu . "</li>\n";
-}
-
-/**
- * Overrides theme_menu_link__main_menu().
- */
-function elstrap_menu_link__main_menu(array $variables) {
-  $element = $variables['element'];
-  $sub_menu = '';
-
-  if ($element['#below'] && $element['#original_link']['depth'] == 1) {
-    // Prevent dropdown functions from being added to management menu so it
-    // does not affect the navbar module.
-    if (($element['#original_link']['menu_name'] == 'management') && (module_exists('navbar'))) {
-      $sub_menu = drupal_render($element['#below']);
-    }
-    else {
+    elseif ((!empty($element['#original_link']['depth'])) && ($element['#original_link']['depth'] == 1)) {
       // Add our own wrapper.
       unset($element['#below']['#theme_wrappers']);
       $sub_menu = '<ul class="dropdown-menu">' . drupal_render($element['#below']) . '</ul>';
-      $element['#attributes']['class'][] = 'dropdown';
+      // Generate as standard dropdown.
       $element['#title'] .= ' <span class="caret"></span>';
-      $element['#localized_options']['attributes']['class'][] = 'dropdown-toggle';
-      $element['#localized_options']['attributes']['data-toggle'] = 'dropdown';
+      $element['#attributes']['class'][] = 'dropdown';
       $element['#localized_options']['html'] = TRUE;
-
 
       // Set dropdown trigger element to # to prevent inadvertant page loading
       // when a submenu link is clicked.
       $element['#localized_options']['attributes']['data-target'] = '#';
+      $element['#localized_options']['attributes']['class'][] = 'dropdown-toggle';
+      $element['#localized_options']['attributes']['data-toggle'] = 'dropdown';
     }
   }
   // On primary navigation menu, class 'active' is not set on active menu item.

@@ -53,32 +53,30 @@ function elstrap_preprocess_html(&$variables) {
 }
 
 /**
- * Preprocess variables for page.tpl.php
+ * Preprocess variables for region.tpl.php
  *
- * @see page.tpl.php
+ * @see region.tpl.php
  */
-function elstrap_preprocess_page(&$variables) {
-  // Add information about the number of sidebars.
-  if (!empty($variables['page']['sidebar_first']) && !empty($variables['page']['sidebar_second'])) {
-    $variables['content_column_class'] = ' class="col-sm-4"';
-  }
-  elseif (!empty($variables['page']['sidebar_first']) || !empty($variables['page']['sidebar_second'])) {
-    $variables['content_column_class'] = ' class="col-sm-8"';
-  }
-  else {
-    $variables['content_column_class'] = NULL;
-  }
+function elstrap_preprocess_region(&$variables, $hook) {
+  switch ($variables['region']) {
+    case 'navigation':
+      global $language;
 
-  $path = drupal_is_front_page() ? '<front>' : $_GET['q'];
-  $links = language_negotiation_get_switch_links('language', $path);
-  $vars = array(
-    'links' => $links->links,
-    'attributes' => array('class' => array('dropdown-menu')),
-    'language' => $variables['language']->language,
-  );
-  $variables['language_menu'] = theme('links__locale_menu', $vars);
+      $path = drupal_is_front_page() ? '<front>' : $_GET['q'];
+      $links = language_negotiation_get_switch_links('language', $path);
+      $vars = array(
+        'links' => $links->links,
+        'attributes' => array('class' => array('dropdown-menu')),
+        'language' => $language->language,
+      );
+      $variables['language_native'] = $language->native;
+      $variables['language_menu'] = theme('links__locale_menu', $vars);
+      break;
 
-  $variables['panel'] = isset($GLOBALS['pager_total']) ? FALSE : TRUE;
+    case 'content':
+      $variables['panel'] = !isset($GLOBALS['pager_total']);
+      break;
+  }
 }
 
 /**
@@ -88,7 +86,11 @@ function elstrap_preprocess_page(&$variables) {
  */
 function elstrap_preprocess_block(&$variables, $hook) {
   $block = $variables['block'];
-  if ($block->module != 'system' && $block->delta != 'main') {
+
+  if ($block->region == 'footer') {
+    $variables['theme_hook_suggestions'][] = 'block__no_wrapper';
+  }
+  elseif ($block->module != 'system' && $block->delta != 'main') {
     $variables['classes_array'][] = 'panel';
     $variables['classes_array'][] = 'panel-default';
     $variables['classes_array'][] = 'clearfix';
@@ -130,6 +132,16 @@ function elstrap_preprocess_html_tag(&$variables) {
 }
 
 /**
+ * Preprocess variables for theme_html_tag()
+ *
+ * @see theme_html_tag()
+ */
+function elstrap_preprocess_html_tag__site_slogan(&$variables) {
+  $variables['element']['#attributes']['class'][] = 'text-center';
+  $variables['element']['#attributes']['class'][] = 'text-primary';
+}
+
+/**
  * Prerocess variables for theme_username()
  *
  * @see theme_username()
@@ -158,16 +170,6 @@ function elstrap_preprocess_field(&$variables, $hook) {
       $variables['classes_array'][] = 'alert-info';
       break;
   }
-}
-
-/**
- * Preprocess variables for theme_image_formatter()
- *
- * @see theme_image_formatter()
- */
-function elstrap_preprocess_image_formatter(&$variables) {
-  $variables['item']['attributes']['class'][] = 'img-thumbnail';
-  $variables['item']['attributes']['class'][] = 'img-responsive';
 }
 
 /**
