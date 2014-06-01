@@ -198,6 +198,9 @@ function elstrap_menu_link__main_menu(array $variables) {
     case 'Article':
       $element['#title'] = '<span class="fa fa-pencil"></span> ' . t('Article') . ' <span class="caret"></span>';
       break;
+    case 'Drupal':
+      $element['#title'] = '<span class="fa fa-drupal"></span> ' . t($element['#title']);
+      break;
     case 'Internet':
       $element['#title'] = '<span class="fa fa-globe"></span> ' . t($element['#title']);
       break;
