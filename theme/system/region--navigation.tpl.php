@@ -25,7 +25,7 @@
  * @ingroup themeable
  */
 ?>
-<?php if ($content): ?>
+<?php if ($page['logo'] || $page['site_name'] || $page['primary_nav'] || $page['secondary_nav'] || $content): ?>
   <header<?php print $attributes; ?>>
     <?php if ($content_attributes): ?><div<?php print $content_attributes; ?>><?php endif; ?>
     <div class="navbar-header">
@@ -37,36 +37,42 @@
       <?php if ($page['site_name']): ?>
         <a class="name navbar-brand" href="<?php print $page['front_page']; ?>" title="<?php print t('Home'); ?>"><?php print $page['site_name']; ?></a>
       <?php endif; ?>
-      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-        <span class="sr-only">Toggle navigation</span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
+      <?php if ($page['primary_nav'] || $page['secondary_nav'] || $content): ?>
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+      <?php endif; ?>
     </div>
-    <div class="navbar-collapse collapse">
-      <div class="navbar-right">
-        <ul class="nav navbar-nav">
-          <li>
-            <a data-toggle="modal" href="#share">
-              <strong>
-                <?php print t('Share'); ?>
-                <span class="fa fa-share"></span>
-              </strong>
-            </a>
-          </li>
+    <?php if ($page['primary_nav'] || $page['secondary_nav'] || $content): ?>
+      <div class="navbar-collapse collapse">
+        <div class="navbar-right">
+          <ul class="nav navbar-nav">
+            <li>
+              <a data-toggle="modal" href="#share">
+                <strong>
+                  <?php print t('Share'); ?>
+                  <span class="fa fa-share"></span>
+                </strong>
+              </a>
+            </li>
 
-          <li class="dropdown">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="fa fa-language"> <?php print $language_native; ?> <span class="caret"></span></a>
-            <?php print $language_menu; ?>
-          </li>
-        </ul>
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="fa fa-language"> <?php print $language_native; ?> <span class="caret"></span></a>
+              <?php print $language_menu; ?>
+            </li>
+          </ul>
+        </div>
+
+        <nav role="navigation">
+          <?php print render($page['primary_nav']); ?>
+          <?php print render($page['secondary_nav']); ?>
+          <?php print $content; ?>
+        </nav>
       </div>
-
-      <nav role="navigation">
-        <?php print $content; ?>
-      </nav>
-    </div>
+    <?php endif; ?>
     <?php if ($content_attributes): ?></div><?php endif; ?>
   </header>
 <?php endif; ?>

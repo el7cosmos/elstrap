@@ -122,7 +122,7 @@ function elstrap_form_search_form_alter(&$form, &$form_state) {
   $form['basic']['keys']['#theme_wrappers'] = array();
 
   $form['basic']['submit']['#attributes']['class'] = array();
-  $form['basic']['submit']['#label'] = '<span class="fa fa-search"></span>';
+  $form['basic']['submit']['#icon'] = '<span class="fa fa-search"></span>';
   $form['basic']['submit']['#prefix'] = '<span class="input-group-btn">';
   $form['basic']['submit']['#suffix'] = '</span>';
 }
@@ -134,7 +134,7 @@ function elstrap_form_pagespeed_insight_analyze_form_alter(&$form, &$form_state,
   $form['url']['#field_prefix'] = '<div class="input-group"><span class="input-group-addon fa fa-globe"></span>';
   $form['url']['#field_suffix'] = '</div>';
 
-  $form['actions']['submit']['#label'] = '<span class="fa fa-tachometer"></span> ' . $form['actions']['submit']['#value'];
+  $form['actions']['submit']['#icon'] = '<span class="fa fa-tachometer"></span>';
   $form['actions']['submit']['#attributes']['class'][] = 'btn-primary';
   $form['actions']['submit']['#attributes']['class'][] = 'btn-lg';
   $form['actions']['submit']['#attributes']['class'][] = 'btn-block';

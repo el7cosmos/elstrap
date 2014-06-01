@@ -1,5 +1,4 @@
 <?php
-
 /**
  * @file
  * Default theme implementation to display a node.
@@ -80,28 +79,26 @@
  * @ingroup themeable
  */
 ?>
-<div id="node-<?php print $node->nid; ?>" class="<?php print $classes; ?> clearfix"<?php print $attributes; ?>>
-  <?php print $user_picture; ?>
-
-  <?php print render($title_prefix); ?>
-  <?php if (!$page): ?>
-    <div class="panel-heading">
+<article id="node-<?php print $node->nid; ?>" class="<?php print $classes; ?> clearfix"<?php print $attributes; ?>>
+  <?php if ((!$page && !empty($title)) || !empty($title_prefix) || !empty($title_suffix) || $display_submitted): ?>
+  <header class="panel-heading">
+    <?php print render($title_prefix); ?>
+    <?php if (!$page && !empty($title)): ?>
       <h2<?php print $title_attributes; ?>><a href="<?php print $node_url; ?>"><?php print $title; ?></a></h2>
       <strong class="pull-right">
         <span class="fa fa-<?php print elstrap_node_type_icon($node->type); ?>"></span>
       </strong>
       <div class="clearfix"></div>
+    <?php endif; ?>
+    <?php print render($title_suffix); ?>
+    <?php if ($page && $display_submitted): ?>
+    <div class="submitted small">
+      <?php print $user_picture; ?>
+      <?php print $submitted; ?>
+      <?php print render($content['field_category']); ?>
     </div>
-
-  <?php endif; ?>
-  <?php print render($title_suffix); ?>
-
-  <?php if ($page && $display_submitted): ?>
-    <div class="panel-heading">
-      <div class="submitted small">
-        <?php print $submitted; ?> <?php print render($content['field_category']); ?>
-      </div>
-    </div>
+    <?php endif; ?>
+  </header>
   <?php endif; ?>
 
   <div class="content panel-body"<?php print $content_attributes; ?>>
@@ -115,23 +112,25 @@
     ?>
   </div>
 
-  <?php print render($content['comments']); ?>
+  <?php if (!empty($content['field_tags']) || !empty($content['field_category']) || !empty($content['links'])): ?>
+    <footer class="panel-footer small">
+      <?php if (!$page): ?>
+        <?php if ($display_submitted): ?>
+          <div class="submitted pull-left">
+            <?php print $submitted; ?> <?php print render($content['field_category']); ?>
+          </div>
+        <?php endif; ?>
 
-  <div class="panel-footer small">
-    <?php if (!$page): ?>
-      <?php if ($display_submitted): ?>
-        <div class="submitted pull-left">
-          <?php print $submitted; ?> <?php print render($content['field_category']); ?>
+        <div class="pull-right">
+          <?php print render($content['links']); ?>
         </div>
+
+        <div class="clearfix"></div>
+      <?php else: ?>
+        <?php print render($content['field_tags']); ?>
       <?php endif; ?>
+    </footer>
+  <?php endif; ?>
 
-      <div class="pull-right">
-        <?php print render($content['links']); ?>
-      </div>
-
-      <div class="clearfix"></div>
-    <?php else: ?>
-      <?php print render($content['field_tags']); ?>
-    <?php endif; ?>
-  </div>
-</div>
+  <?php print render($content['comments']); ?>
+</article>

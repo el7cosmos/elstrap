@@ -24,16 +24,6 @@ function elstrap_html_tag__site_slogan($variables) {
 }
 
 /**
- * Overrides theme_button().
- */
-function elstrap_button($variables) {
-  $label = isset($variables['element']['#label']) ? $variables['element']['#label'] : $variables['element']['#value'];
-
-  // This line break adds inherent margin between multiple buttons.
-  return '<button' . drupal_attributes($variables['element']['#attributes']) . '>' . $label . "</button>\n";
-}
-
-/**
  * Overrides theme_status_messages().
  */
 function elstrap_status_messages($variables) {
